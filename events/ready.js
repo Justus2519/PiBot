@@ -6,6 +6,7 @@ module.exports = {
   name: Events.ClientReady,
   once: true,
   execute(client) {
+    client.user.setActivity('Pi', {type: 1});
     console.log(`Ready! Logged in as ${client.user.tag}`);
 
     //======================================================      PI TIME
