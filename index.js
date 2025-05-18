@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const{token} = require("./config.json");
 
-const client = new Client({intents: [GatewayIntentBits.Guilds]});
+const client = new Client({intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent]});
 
 //Get command files ================================================ COMMANDS
 client.commands = new Collection();
