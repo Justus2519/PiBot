@@ -4,6 +4,11 @@ module.exports = {
   name: Events.InteractionCreate,
   once: false,
   async execute(interaction){
+    //====================================================== BUTTON INTERACTION
+    if(interaction.isButton()){
+      console.log(interaction.id);
+    }
+    //====================================================== SLASH COMMAND INTERACTION
     if(!interaction.isChatInputCommand()) return;
     console.log(interaction.commandName);
     const command = interaction.client.commands.get(interaction.commandName);
