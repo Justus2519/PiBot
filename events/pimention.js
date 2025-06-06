@@ -7,7 +7,7 @@ module.exports = {
   async execute(message){
     let msg = message.content;
     msg = msg.toLowerCase();
-    mention = /^((.*\W+)?|\W*)[Pp]+[Ii]+([Bb][Oo][Tt])?(\W+.*|\W*)$/
+    mention = /^((.*\W+)?|\W*)[Pp]+[Ii]+([Bb]+[Oo]+[Tt]+)?(\W+.*|\W*)$/
     if( msg.search(mention) != -1 && message.author.id != clientId){
       await message.channel.send("Did someone mention pi\?\?\!\!");
     }
