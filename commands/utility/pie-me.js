@@ -16,7 +16,7 @@ module.exports = {
       let part2="";
 
       if(words[0].length>0) part1 = words[0] + " ";
-      if(words.length>1 && words[1]>0) part2 = " " + words[1];
+      if(words.length>1) part2 = " " + words[1];
 
       await interaction.reply(`${part1}${fruit} pie${part2}!`);
     },
