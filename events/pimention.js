@@ -13,7 +13,7 @@ module.exports = {
     }
     mention2 = /^((.*\W+)?|\W*)[Ff]+([Oo]{2}[Oo]*|[Ee]{2}[Ee]*)[Tt]+(\W+.*|\W*)$/
     if( msg.search(mention2) != -1 && message.author.id != clientId){
-      await message.channel.send("Mmmmmm feet");
+      await message.channel.send("Cowabunga");
     }
 
   },
