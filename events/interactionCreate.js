@@ -6,7 +6,8 @@ module.exports = {
   async execute(interaction){
     //====================================================== BUTTON INTERACTION
     if(interaction.isButton()){
-      console.log(interaction.id);
+      console.log(interaction.component.customId);
+      return
     }
     //====================================================== SLASH COMMAND INTERACTION
     if(!interaction.isChatInputCommand()) return;
