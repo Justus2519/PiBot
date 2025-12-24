@@ -10,7 +10,7 @@ module.exports = {
     console.log(`Ready! Logged in as ${client.user.tag}`);
 
     //======================================================      PI TIME
-    let piMessage = new cron.CronJob('06 14 15 * * *', ()=>{
+    let piMessage = new cron.CronJob('06 14 20 * * *', ()=>{
       const guild = client.guilds.cache.get(`${guildId}`);
       const channel = guild.channels.cache.get(`${channelId}`);
       channel.send('Pi time.')
