@@ -3,7 +3,9 @@ const {Events, Collection, MessageFlags} = require('discord.js');
 module.exports = {
   name: Events.InteractionCreate,
   once: false,
-  async execute(interaction){
+  async execute(interaction){  
+    console.log('Bot has Manage Nicknames:', hasManageNicknames);
+    console.log('Bot\'s highest role position:', botMember.roles.highest.position);
     //====================================================== BUTTON INTERACTION
     if(interaction.isButton()){
       console.log(interaction.component.customId);
