@@ -8,7 +8,7 @@ const cron = require('cron');
 module.exports = {
   name: Events.ClientReady,
   once: true,
-  execute (client) {
+  async execute (client) {
     client.user.setActivity('Pi', {type: 1});
     console.log(`Ready! Logged in as ${client.user.tag}`);
     const guild = client.guilds.cache.get(`${guildId}`);
@@ -17,7 +17,7 @@ module.exports = {
     let holidayCount = 0;
     let regularCount = 0;
     let isHoliday = false;
-    let userQ = guild.members.cache.get(`${quinnUserId}`);
+    let userQ = await guild.members.fetch(quinnUserId);
 
     //======================================================      PI TIME
     let piMessage = new cron.CronJob('06 14 20 * * *', ()=>{
