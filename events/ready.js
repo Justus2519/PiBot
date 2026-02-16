@@ -14,21 +14,12 @@ module.exports = {
     const guild = client.guilds.cache.get(`${guildId}`);
     const channel = guild.channels.cache.get(`${channelId}`);
 
+    //===================================== CRON JOBS
     let holidayCount = 0;
     let regularCount = 0;
     let isHoliday = false;
     let userQ = await guild.members.fetch(quinnUserId);
 
-    //======================================================      PI TIME
-    let piMessage = new cron.CronJob('06 14 20 * * *', ()=>{
-      channel.send('Pi time.');
-      if(!isHoliday){
-        userQ.setNickname(`${def[regularCount]}`);
-        regularCount++;
-      }
-      if(regularCount == def.length) regularCount = 0;
-    });
-    piMessage.start();
     function holidayJob(holiday){
       return ()=>{
         userQ.setNickname(`${holiday[holidayCount]}`);
@@ -38,7 +29,6 @@ module.exports = {
           holidayCount = 0;
           isHoliday = false;
         }
-        console.log("attempted to change nickname");
       }
     }
 
@@ -47,14 +37,27 @@ module.exports = {
       isHoliday = false;
       holidayCount = 0;
     });
-    let xmas = new cron.CronJob('01 14 20 6-25 12 *', holidayJob(christmas));
-    let hween = new cron.CronJob('02 14 20 12-31 10 *', holidayJob(halloween));
-    let vday = new cron.CronJob('03 14 20 8-14 2 *', holidayJob(valentines));
-    let eggDay = new cron.CronJob('04 14 20 1,2 4 *', holidayJob(easter));
+    let xmas = new cron.CronJob('01 11 14 6-25 12 *', holidayJob(christmas));
+    let hween = new cron.CronJob('02 11 14 12-31 10 *', holidayJob(halloween));
+    let vday = new cron.CronJob('03 11 14 8-14 2 *', holidayJob(valentines));
+    let eggDay = new cron.CronJob('04 11 14 1,2 4 *', holidayJob(easter));
+    let normalChange = new cron.CronJob('06 11 14 * * *', ()=>{
+      if(!isHoliday){
+        userQ.setNickname(`${def[regularCount]}`);
+        regularCount++;
+      }
+      if(regularCount == def.length) regularCount = 0;
+    });
+    let piMessage = new cron.CronJob('06 14 20 * * *', ()=>{
+      channel.send('Pi time.');
+    });
+
+    piMessage.start();
     bday.start();
     xmas.start();
     hween.start();
     vday.start();
     eggDay.start();
+    normalChange.start();
   },
 };
