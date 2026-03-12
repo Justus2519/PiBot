@@ -145,7 +145,14 @@
 		"White currant",
 		"White sapote",
 		"Ximenia",
-		"Yuzu"
+		"Yuzu",
+		"Strawberry rhubarb",
+		"Lemon meringue",
+		"Boston cream",
+		"Key lime",
+		"Pecan",
+		"Water",
+		"Milk"
 	],
 	"sentence": [
 		["You could probably go for some"],
@@ -156,7 +163,7 @@
 		["The pie I'm thinking of right now is"],
 		["Sometimes a bad day can be made better with"],
 		["Mmmmmm,"],
-		["You know what pie is yummy?", "is"],
+		["You know what pie is yummy?", "is!"],
 		["PiBot could not live without"],
 		["", "is a tasy pie"],
 		["", "is soooo yummy"],
