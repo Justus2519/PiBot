@@ -16,7 +16,7 @@ module.exports = {
 
     //===================================== CRON JOBS
     let holidayCount = 0;
-    let regularCount = 0;
+    let regularCount = 25; //Some arbitrary starting point
     let isHoliday = false;
     let userQ = await guild.members.fetch(quinnUserId);
 
@@ -32,25 +32,28 @@ module.exports = {
       }
     }
 
-    let bday = new cron.CronJob('00 14 20 16 8 *', ()=>{
+    let bday = new cron.CronJob('00 11 09 16 8 *', ()=>{
       userQ.setNickname(`${birthday}`);
       isHoliday = false;
       holidayCount = 0;
-    });
-    let xmas = new cron.CronJob('01 11 14 6-25 12 *', holidayJob(christmas));
-    let hween = new cron.CronJob('02 11 14 12-31 10 *', holidayJob(halloween));
-    let vday = new cron.CronJob('03 11 14 8-14 2 *', holidayJob(valentines));
-    let eggDay = new cron.CronJob('04 11 14 1,2 4 *', holidayJob(easter));
-    let normalChange = new cron.CronJob('06 11 14 * * *', ()=>{
+    },
+     timeZone='America/Toronto');
+    let xmas = new cron.CronJob('01 11 09 6-25 12 *', holidayJob(christmas), timeZone='America/Toronto');
+    let hween = new cron.CronJob('02 11 09 12-31 10 *', holidayJob(halloween), timeZone='America/Toronto');
+    let vday = new cron.CronJob('03 11 09 8-14 2 *', holidayJob(valentines), timeZone='America/Toronto');
+    let eggDay = new cron.CronJob('04 11 09 1,2 4 *', holidayJob(easter), timeZone='America/Toronto');
+    let normalChange = new cron.CronJob('06 11 09 * * *', ()=>{
       if(!isHoliday){
         userQ.setNickname(`${def[regularCount]}`);
         regularCount++;
       }
       if(regularCount == def.length) regularCount = 0;
-    });
-    let piMessage = new cron.CronJob('06 14 20 * * *', ()=>{
+    }, 
+    timeZone='America/Toronto');
+    let piMessage = new cron.CronJob('06 14 15* * *', ()=>{
       channel.send('Pi time.');
-    });
+    }, 
+    timeZone='America/Toronto');
 
     piMessage.start();
     bday.start();
