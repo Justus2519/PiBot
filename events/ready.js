@@ -37,11 +37,11 @@ module.exports = {
       isHoliday = false;
       holidayCount = 0;
     },
-     timeZone='America/Toronto');
-    let xmas = new cron.CronJob('01 11 09 6-25 12 *', holidayJob(christmas), timeZone='America/Toronto');
-    let hween = new cron.CronJob('02 11 09 12-31 10 *', holidayJob(halloween), timeZone='America/Toronto');
-    let vday = new cron.CronJob('03 11 09 8-14 2 *', holidayJob(valentines), timeZone='America/Toronto');
-    let eggDay = new cron.CronJob('04 11 09 1,2 4 *', holidayJob(easter), timeZone='America/Toronto');
+     null, true, 'America/Toronto');
+    let xmas = new cron.CronJob('01 11 09 6-25 12 *', holidayJob(christmas), null, true, 'America/Toronto');
+    let hween = new cron.CronJob('02 11 09 12-31 10 *', holidayJob(halloween), null, true, 'America/Toronto');
+    let vday = new cron.CronJob('03 11 09 8-14 2 *', holidayJob(valentines), null, true, 'America/Toronto');
+    let eggDay = new cron.CronJob('04 11 09 1,2 4 *', holidayJob(easter), null, true, 'America/Toronto');
     let normalChange = new cron.CronJob('06 11 09 * * *', ()=>{
       if(!isHoliday){
         userQ.setNickname(`${def[regularCount]}`);
@@ -49,11 +49,11 @@ module.exports = {
       }
       if(regularCount == def.length) regularCount = 0;
     }, 
-    timeZone='America/Toronto');
-    let piMessage = new cron.CronJob('06 14 15* * *', ()=>{
+    null, true, 'America/Toronto');
+    let piMessage = new cron.CronJob('06 14 15 * * *', ()=>{
       channel.send('Pi time.');
     }, 
-    timeZone='America/Toronto');
+    null, true, 'America/Toronto');
 
     piMessage.start();
     bday.start();
